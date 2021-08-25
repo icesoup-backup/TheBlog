@@ -9,14 +9,15 @@
       <h5 class="card-title">{{ post.title }}</h5>
       <p class=" text-muted">{{ post.author }} | {{ post.createdOn }}</p>
       <p class="card-text ">{{ post.content | safe }}</p>
-      <a href="" class="btn btn-outline-light">Edit</a>
+      <a href="{% url 'edit' post.slug %}" class="btn btn-outline-light">Edit</a>
     </div>
 </div>
 
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
   <div class="card-body">
+    <h4 class="card-title text-center">Comments</h4>
     {% for comment in comments %}
-    <h5 class="card-title">{{ comment.name }}</h5>
+    <p class="card-title">{{ comment.name }}</p>
     <p class=" text-muted">{{ comment.createdOn }}</p>
     <p class="card-text">{{ comment.body | linebreaks }}</p>
     {% endfor %}

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'blog',
     'crispy_forms',
     'markdownx',
+    'django_summernote',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -129,3 +130,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 STATIC_ROOT = BASE_DIR / 'static'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4

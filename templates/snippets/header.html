@@ -15,6 +15,7 @@
       <div class="text-end">
         {% if user.is_authenticated %}
         <b>{{ user.username }}</b> &ensp; 
+        <a role="button" href="{% url 'post_new' %}" class="btn btn-outline-light" >New Post</a>
         <a role="button" href="/accounts/logout" class="btn btn-outline-light me-2">Logout</a>
         {% else %}
         <a role="button" href='/accounts/login' class="btn btn-outline-light me-2">Login</a>
