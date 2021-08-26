@@ -19,7 +19,7 @@
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
   <div class="card-body">
     <h4 class="card-title text-center">Comments</h4>
-    {% for comment in comments %}
+    {% for comment in form %}
     <p class="card-title">{{ comment.name }}</p>
     <p class=" text-muted">{{ comment.createdOn }}</p>
     <p class="card-text">{{ comment.body | linebreaks }}</p>
@@ -37,7 +37,7 @@
       {% else %}
       <h5 class="card-title">Leave Comment</h5>
       <form method="post" style="margin-top: 1.3em;">
-        {{ comment_form | crispy }}
+        {{ form | crispy }}
         {% csrf_token %}
         <br>
         <button type="submit" class="btn btn-outline-light">Submit</button>

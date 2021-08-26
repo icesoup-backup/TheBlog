@@ -1,4 +1,3 @@
-from collections import namedtuple
 from . import views
 from django.urls import path
 
