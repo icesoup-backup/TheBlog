@@ -103,3 +103,8 @@ class PostNew(CreateView):
 #             return redirect('home')
 #         else:
 #             return render(request, template_name, {'post_form':post_form})
+
+class PostDelete(DeleteView):
+    template_name = 'blog/post_delete.html'
+    model = Post
+    success_url = '/'

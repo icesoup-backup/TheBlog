@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
+    <div class="card-body mx-auto">
+        <form method="post" style="margin-top: 1.3em;">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <div class="text-center" >
+                <input class="btn btn-danger" type="submit" value="Confirm">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
