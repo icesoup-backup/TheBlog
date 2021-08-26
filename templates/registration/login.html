@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if form.error %}
+<p>Something went wrong please try again</p>
+{% endif %}
+
+{% if next %}
+<p>You're not logged in yet</p>
+{% endif %}
+
+<div class="mask d-flex align-items-center min-vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px; background-color: #202020">
+                    <div class="card-body p-5" style="color: #FFFFFF;">
+                        <h2 class="text-center mb-5" style="color: #FFFFFF;">Login</h2>
+                    
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+
+                            <div class="text-center">
+                                <p>Username: {{ form.username }}</p>
+                                <p>Password: {{ form.password }}</p>
+                            </div>
+
+                            <div class="text-center mt-5">
+                                <input type="submit" value="Login" class="btn btn-outline-light">
+                                <input type="hidden" name="next" value="{{ next }}">
+                            </div>
+                    
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
