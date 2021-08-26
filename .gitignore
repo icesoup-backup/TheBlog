@@ -6,3 +6,4 @@ TheBlog/__pycache__
 blog/migrations/.DS_Store
 blog/.DS_Store
 .DS_Store
+userauth/__pycache__
