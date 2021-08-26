@@ -5,7 +5,7 @@
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
     <div class="card-body mx-auto">
         <form method="post" style="margin-top: 1.3em;">
-            {{ post_form | safe }}
+            {{ form | safe }}
             
             {% csrf_token %}
             

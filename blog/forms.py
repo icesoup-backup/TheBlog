@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db.models import fields
 from .models import Comment, Post
 from django import forms
@@ -9,10 +10,17 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('name', 'body')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].disabled = True
 
-class PostForm(forms.Form):
+
+class PostForm(forms.ModelForm):
     # instead of forms.Textarea
     content = forms.CharField(widget=SummernoteWidget())
+    class Meta:
+        model = Post
+        fields = ('content',)
 
 
 class NewPostForm(forms.ModelForm):
@@ -20,7 +28,19 @@ class NewPostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('author', 'title', 'slug' , 'content')
+        fields = ('author', 'title', 'slug', 'content')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['author'].disabled = True
+
+# class NewPostForm(forms.ModelForm):
+#     content = forms.CharField(widget=SummernoteWidget())
+
+#     class Meta:
+#         model = Post
+#         fields = ('author', 'title', 'slug' , 'content')
+
 
     # def __init__(self, *args, **kwargs):
     #     args=self.clean_data(args[0], kwargs.get('initial'))
