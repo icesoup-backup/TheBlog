@@ -1,4 +1,8 @@
 .vscode
 djangoENV
 blog/__pycache__
+blog/migrations/__pycache__
 TheBlog/__pycache__
+blog/migrations/.DS_Store
+blog/.DS_Store
+.DS_Store
