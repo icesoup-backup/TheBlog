@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
 from django.db.models import fields
+from django.forms.widgets import HiddenInput
 from .models import Comment, Post
 from django import forms
 from django_summernote.widgets import SummernoteWidget
+from django.utils.text import slugify
 
 
 class CommentForm(forms.ModelForm):
@@ -12,7 +14,8 @@ class CommentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['name'].disabled = True
+        self.fields['name'].widget = HiddenInput()
+        self.fields['body'].label = ''
 
 
 class PostForm(forms.ModelForm):
@@ -34,19 +37,3 @@ class NewPostForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['author'].disabled = True
 
-# class NewPostForm(forms.ModelForm):
-#     content = forms.CharField(widget=SummernoteWidget())
-
-#     class Meta:
-#         model = Post
-#         fields = ('author', 'title', 'slug' , 'content')
-
-
-    # def __init__(self, *args, **kwargs):
-    #     args=self.clean_data(args[0], kwargs.get('initial'))
-    #     super().__init__(*args, **kwargs)
-
-    # def clean_data(self, data, initial):
-    #     params= {}
-    #     params['slug'] = initial.get('title')
-    #     return tuple([params])

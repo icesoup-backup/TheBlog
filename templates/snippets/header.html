@@ -19,7 +19,7 @@
         <a role="button" href="/accounts/logout" class="btn btn-outline-light me-2">Logout</a>
         {% else %}
         <a role="button" href='/accounts/login' class="btn btn-outline-light me-2">Login</a>
-        <a role="button" href='/register' class="btn btn-outline-light me-2">Register</a>
+        <a role="button" href="{% url 'register' %}" class="btn btn-outline-light me-2">Register</a>
         {% endif %}
       </div>
     </div>
