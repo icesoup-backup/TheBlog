@@ -1,9 +1,19 @@
+### System Stuff ###
 .vscode
 djangoENV
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
 blog/__pycache__
 blog/migrations/__pycache__
 TheBlog/__pycache__
+userauth/__pycache__
+userauth/migrations/__pycache__/
+
+### Mac Specific ###
 blog/migrations/.DS_Store
 blog/.DS_Store
 .DS_Store
-userauth/__pycache__
