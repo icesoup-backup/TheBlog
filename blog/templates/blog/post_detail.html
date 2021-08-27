@@ -38,7 +38,7 @@
       </div>
       {% else %}
       <h5 class="card-title">Leave Comment</h5>
-      <form method="post" style="margin-top: 1.3em;">
+      <form method="post" action="{% url 'comment' post.slug %}" style="margin-top: 1.3em;">
         {{ form | crispy }}
         {% csrf_token %}
         <br>

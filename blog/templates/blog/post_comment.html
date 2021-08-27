@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-
-{title: 'List'}
 
 {% block content %}
 
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
     <div class="card-body mx-auto">
         <form method="post" style="margin-top: 1.3em;">
-            {{ form | crispy | safe}}
+            {{ form | safe }}
             
             {% csrf_token %}
             <br>
             <button type="submit" class="btn btn-outline-light">Submit</button>
-        </form>    
+        </form> 
     </div>
 </div>
 

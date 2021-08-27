@@ -7,12 +7,13 @@ from django_summernote.widgets import SummernoteWidget
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name', 'body', 'post')
+        fields = ('body',)
+        # fields = ('name', 'body', 'post')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['name'].widget = HiddenInput()
-        self.fields['post'].widget = HiddenInput()
+        # self.fields['name'].widget = HiddenInput()
+        # self.fields['post'].widget = HiddenInput()
         self.fields['body'].label = ''
 
 
