@@ -1,20 +1,18 @@
-from django.contrib.auth.models import User
-from django.db.models import fields
 from django.forms.widgets import HiddenInput
 from .models import Comment, Post
 from django import forms
 from django_summernote.widgets import SummernoteWidget
-from django.utils.text import slugify
 
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name', 'body')
+        fields = ('name', 'body', 'post')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget = HiddenInput()
+        self.fields['post'].widget = HiddenInput()
         self.fields['body'].label = ''
 
 

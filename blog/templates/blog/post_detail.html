@@ -19,10 +19,12 @@
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
   <div class="card-body">
     <h4 class="card-title text-center">Comments</h4>
-    {% for comment in form %}
+    {% for comment in comments %}
     <p class="card-title">{{ comment.name }}</p>
     <p class=" text-muted">{{ comment.createdOn }}</p>
     <p class="card-text">{{ comment.body | linebreaks }}</p>
+    {% empty %}
+    <p class="alert alert-dark text-center" role="alert">Post a comment to populate this field</p>
     {% endfor %}
   </div>
 </div>

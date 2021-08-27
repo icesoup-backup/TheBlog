@@ -3,18 +3,36 @@
 {title: 'Home'}
 
 {% block content %}
-<div class="row" >
+<!-- <div class="row" > -->
     {% for post in post_list %}
-    <div class="col-sm-6 col-md-3">
-        <div class="card mt-5" style="background-color: #202020; color: #FFFFFF;">
+    <!-- <div class="col-sm-6 col-md-3"> -->
+        <div class="card m-3" style="background-color: #202020; color: #FFFFFF;">
             <div class="card-body">
                 <h2 class="card-title">{{ post.title }}</h2>
                 <p class="card-text text-muted h6">{{ post.author }} | {{ post.createdOn}} </p>
-                <p class="card-text">{{post.content|slice:":200" | safe }}</p>
+                <p class="card-text">{{post.content| slice:":200" | safe }} .... </p>
                 <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
-</div>
+<!-- </div> -->
+
+{% block pagination %}
+    {% if is_paginated %}
+    <div class="m-3">
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a class='btn btn-outline-light btn-sm' href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&#x2BC7;</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class='btn btn-outline-light btn-sm' href="{{ request.path }}?page={{ page_obj.next_page_number }}">&#x2BC8;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
 {% endblock content %}
