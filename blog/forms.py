@@ -18,8 +18,8 @@ class CommentForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
-    # instead of forms.Textarea
     content = forms.CharField(widget=SummernoteWidget())
+
     class Meta:
         model = Post
         fields = ('content',)
@@ -35,4 +35,3 @@ class NewPostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['author'].disabled = True
-

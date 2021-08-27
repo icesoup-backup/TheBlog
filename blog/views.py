@@ -1,11 +1,11 @@
 from django.utils.text import slugify
 from django.views import generic
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
-from .models import Comment, Post
-from .forms import CommentForm, PostForm, NewPostForm
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from .models import Comment, Post
+from .forms import CommentForm, PostForm, NewPostForm
 
 
 class PostList(generic.ListView):
@@ -19,12 +19,6 @@ class PostDetail(generic.DetailView):
     model = Post
     form_class = CommentForm
 
-    # def get_initial(self):
-    #     initial = super().get_initial()
-    #     initial['name'] = self.request.user
-    #     initial['post'] = self.get_object()
-    #     return initial
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = super().get_object()
@@ -32,37 +26,6 @@ class PostDetail(generic.DetailView):
         context['post'] = obj
         context['form'] = self.form_class
         return context
-
-    # def get_success_url(self):
-    #     print(slugify(super().get_object()))
-    #     return reverse_lazy('post_detail', kwargs={'slug':slugify(super().get_object())})
-
-    # def post(self, request, slug):
-    #     template_name = 'blog/post_detail.html'
-    #     post = get_object_or_404(Post, slug=slug)
-    #     return render(request, template_name, {'post': post})
-    #     comments = post.comments.filter(active=True)
-    #     new_comment = None
-
-    #     comment_form = CommentForm(data=request.POST)
-    #     if comment_form.is_valid():
-    #         new_comment = comment_form.save(commit=False)
-    #         new_comment.post = post
-    #         new_comment.save()
-    #     return render(request, template_name, {'post': post,
-    #                                            'comments': comments,
-    #                                            'new_comment': new_comment,
-    #                                            'comment_form': comment_form})
-
-    # def get(self, request, slug):
-    #     template_name = 'blog/post_detail.html'
-    #     post = get_object_or_404(Post, slug=slug)
-    #     comments = post.comments.filter(active=True)
-    #     comment_form = CommentForm(initial={'name': request.user})
-
-    #     return render(request, template_name, {'post': post,
-    #                                            'comments': comments,
-    #                                            'comment_form': comment_form})
 
 
 class PostEdit(LoginRequiredMixin, UpdateView):
