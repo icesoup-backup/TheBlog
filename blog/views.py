@@ -47,7 +47,8 @@ class PostEdit(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         print(slugify(super().get_object()))
-        return reverse_lazy('post_detail', kwargs={'slug': slugify(super().get_object())})
+        return reverse_lazy('post_detail',
+                            kwargs={'slug': slugify(super().get_object())})
 
 
 class PostNew(LoginRequiredMixin, CreateView):
@@ -97,4 +98,5 @@ class CommentNew(CreateView):
         return Post.objects.filter(slug=self.kwargs.get('slug')).first()
 
     def get_success_url(self):
-        return reverse_lazy('post_detail', kwargs={'slug': self.kwargs.get('slug')})
+        return reverse_lazy('post_detail',
+                            kwargs={'slug': self.kwargs.get('slug')})
