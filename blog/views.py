@@ -46,7 +46,7 @@ class PostEdit(LoginRequiredMixin, UpdateView):
             request, *args, **kwargs)
 
     def get_success_url(self):
-        print(slugify(super().get_object()))
+        # print(slugify(super().get_object()))
         return reverse_lazy('post_detail',
                             kwargs={'slug': slugify(super().get_object())})
 

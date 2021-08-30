@@ -24,10 +24,10 @@
         <div class="pagination">
             <span class="page-links">
                 {% if page_obj.has_previous %}
-                    <a class='btn btn-outline-light btn-sm' href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&#x2BC7;</a>
+                    <a class='btn btn-outline-light btn-sm' href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&larr;</a>
                 {% endif %}
                 {% if page_obj.has_next %}
-                    <a class='btn btn-outline-light btn-sm' href="{{ request.path }}?page={{ page_obj.next_page_number }}">&#x2BC8;</a>
+                    <a class='btn btn-outline-light btn-sm' href="{{ request.path }}?page={{ page_obj.next_page_number }}">&rarr;</a>
                 {% endif %}
             </span>
         </div>
