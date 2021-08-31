@@ -100,3 +100,37 @@ class CommentNew(CreateView):
     def get_success_url(self):
         return reverse_lazy('post_detail',
                             kwargs={'slug': self.kwargs.get('slug')})
+
+
+class PostStatus(UpdateView):
+    template_name = 'blog/post_comment.html'
+    model =  Post
+    fields = ['status']
+
+    def post(self, request, *args, **kwargs):
+        post = super().post(request, *args, **kwargs)
+        pd = self.request.POST.getlist('status')
+        if not pd:
+            self.object.status = 0
+            # pd = self.request.POST.copy()
+            # pd.update({'status':'0'})
+            # self.request.POST = pd
+        return post
+
+
+    # def form_valid(self, form):
+    #     import pdb;pdb.set_trace()
+    #     self.object = form.save(commit=False)
+    #     pd = self.request.POST.getlist('status')
+    #     print(pd)
+    #     if pd:
+    #         self.object.save()
+    #     else:
+    #         self.object.status = 0
+    #         self.object.save() 
+    #     return super().form_valid(form)
+
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail',
+                            kwargs={'slug': self.kwargs.get('slug')})
