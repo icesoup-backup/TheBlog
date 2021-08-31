@@ -99,7 +99,5 @@ class DashboardViewPost(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = super().get_object()
-        print(obj)
         context['posts'] = Post.objects.filter(author = obj)
-        print(context)
         return context
