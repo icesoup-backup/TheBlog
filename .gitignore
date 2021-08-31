@@ -9,6 +9,8 @@ djangoENV
 __pycache__/
 blog/__pycache__
 blog/migrations/__pycache__
+dashboard/__pycache__
+dashboard/migrations/__pycache__
 TheBlog/__pycache__
 userauth/__pycache__
 userauth/migrations/__pycache__/
