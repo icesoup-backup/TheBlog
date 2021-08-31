@@ -12,6 +12,9 @@
       <div class="text-end">
         {% if user.is_authenticated %}
         <b>{{ user.username }}</b> &ensp; 
+        {% if user.is_superuser %}
+        <a role="button" href="{% url 'dashboard' %}" class="btn btn-outline-light" >Dashboard</a>
+        {% endif %}
         <a role="button" href="{% url 'post_new' %}" class="btn btn-outline-light" >New Post</a>
         <a role="button" href="/accounts/logout" class="btn btn-outline-light me-2">Logout</a>
         {% else %}

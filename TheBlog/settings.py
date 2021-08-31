@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog',
+    'dashboard',
     'crispy_forms',
     'markdownx',
     'django_summernote',

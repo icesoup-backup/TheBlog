@@ -7,8 +7,8 @@
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
     <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
-      <p class=" text-muted">{{ post.author }} | {{ post.createdOn }}</p>
-      <p class="card-text ">{{ post.content | safe }}</p>
+      <p class="text-muted">{{ post.author }} | {{ post.createdOn }}</p>
+      <p class="card-text">{{ post.content | safe }}</p>
       {% if post.author == user %}
       <a href="{% url 'edit' post.slug %}" class="btn btn-outline-light">Edit</a>
       <a href="{% url 'delete' post.slug %}" class="btn btn-outline-danger">Delete</a>
@@ -20,9 +20,14 @@
   <div class="card-body">
     <h4 class="card-title text-center">Comments</h4>
     {% for comment in comments %}
-    <p class="card-title">{{ comment.name }}</p>
-    <p class=" text-muted">{{ comment.createdOn }}</p>
-    <p class="card-text">{{ comment.body | linebreaks }}</p>
+      <div class="col align-self-start"></div>
+        <b>{{ comment.name }}</b>
+      <div class="col align-self-end text-muted text-uppercase" style="font-size: smaller;">
+        {{ comment.createdOn }}
+      </div>
+      <div class="col align-slf-start">
+        {{ comment.body | linebreaks }}
+      </div>
     {% empty %}
     <p class="alert alert-dark text-center" role="alert">Post a comment to populate this field</p>
     {% endfor %}
