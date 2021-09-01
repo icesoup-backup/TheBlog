@@ -33,6 +33,12 @@
 </div>
 
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
+  <div class="card-body text-center">
+    {% for key in keywords.split %}  #{{ key }}  {% endfor %}
+  </div>
+</div>
+
+<div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
   <div class="card-body">
     <h4 class="card-title text-center">Comments</h4>
     {% for comment in comments %}

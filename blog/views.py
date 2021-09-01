@@ -6,6 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Comment, Post
 from .forms import CommentForm, PostForm, NewPostForm
+from summa import keywords
+import re
 
 
 class PostList(generic.ListView):
@@ -19,12 +21,22 @@ class PostDetail(generic.DetailView):
     model = Post
     form_class = CommentForm
 
+    def cleanhtml(self, html_text):
+        cleanr = re.compile('<.*?>')
+        cleantext = re.sub(cleanr, '', html_text)
+        return cleantext
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = super().get_object()
+        clean_content = self.cleanhtml(obj.content)
+        kwords = keywords.keywords(clean_content)
+
+
         context['comments'] = obj.comments.filter(active=True)
         context['post'] = obj
         context['form'] = self.form_class
+        context['keywords'] = kwords
         return context
 
 
