@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 STATUS = (
-    (0, "Draft"),
-    (1, "Publish")
+    (False, "Draft"),
+    (True, "Publish")
 )
 
 
@@ -16,7 +16,7 @@ class Post(models.Model):
     updatedOn = models.DateTimeField(auto_now=True)
     content = models.TextField()
     createdOn = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=1)
+    status = models.BooleanField(choices=STATUS, default=True)
 
     class Meta:
         ordering = ['-createdOn']

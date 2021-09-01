@@ -14,16 +14,17 @@
       <a href="{% url 'delete' post.slug %}" class="btn btn-outline-danger">Delete</a>
       {% endif %}
 
-      <!-- Status toggle Stuff -->
+      <!-- Status dropdown Stuff -->
       {% if user.is_superuser %}
-      <form method="POST" action="{% url 'status' post.slug %}" name="statusForm" onclick=submitForm()>
+      <form method="POST" action="{% url 'status' post.slug %}" name="statusForm" id='statusForm'>
         {% csrf_token %}
-        <div class="form-check form-switch" style="margin-top: 1.3em;">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheck" value="1" name="status" 
-          {% if post.status == 1 %} checked {% endif %}/>
-          <label class="form-check-label" for="flexSwitchCheck">Publish</label>
-          <!-- <button type="submit" class="btn btn-outline-light btn-sm">Publish</button> -->
-        </div>
+
+        <br>
+        <select name="status" id="statusSelect" class="form-select form-select-sm" onchange="submitForm()" style="width: 7%;">
+          <option value="True" {% if post.status == True %} selected {% endif %}>Publish</option>
+          <option value="False"{% if post.status == False %} selected {% endif %}>Draft</option>
+        </select>
+
       </form>
       {% endif %}
 
@@ -73,10 +74,17 @@
   </div>
 </div>
 
+
+{% endblock content %}
+
+
+
+{% block js %}
 <script>
+  
   function submitForm(){
     document.statusForm.submit()
   }
 </script>
-
-{% endblock content %}
+  
+{% endblock %}
