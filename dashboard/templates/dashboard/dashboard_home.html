@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}Dashboard{% endblock %}
+
 {% block content %}
 
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
@@ -7,6 +9,7 @@
       <thead>
         <tr>
           <th scope="col">Name</th>
+          <!-- <th scope="col">Posts</th> -->
           <th scope="col">View Posts</th>
           <th scope="col">Update User</th>
           <th scope="col">Delete User</th>
@@ -16,6 +19,7 @@
       <tbody>
         <tr>
           <td>{{ user }}</td>
+          <!-- <td>{% for post in posts %}{{posts.count}}{% endfor %}</td> -->
           <td><a href="{% url 'dashboard_view' user.pk %}" class="btn btn-sm btn-outline-success">View</a></td>
           <td><a href="{% url 'dashboard_edit' user.pk %}" class="btn btn-sm btn-outline-light">Update</a></td>
           <td><a href="{% url 'dashboard_delete' user.pk %}" class="btn btn-sm btn-outline-danger">Delete</a></td>
@@ -24,13 +28,7 @@
       {% endfor %}
     </table>
 
-    <a href="{% url 'dashboard_new' %}" class="btn btn-outline-success text-center">Create New User</a>
+    <a href="{% url 'dashboard_new' %}" class="btn btn-outline-success text-center" >Create New User</a>
 
-    <!-- <div class="card-body">
-      <p class="card-text">{{ user }}</p>
-      <a href="" class="btn btn-outline-success">View</a>
-      <a href="{% url 'dashboard_edit' user.pk %}" class="btn btn-outline-light">Update</a>
-      <a href="{% url 'dashboard_delete' user.pk %}" class="btn btn-outline-danger">Delete</a>
-    </div> -->
 </div>
 {% endblock %}

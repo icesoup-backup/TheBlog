@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{title: 'Detail'}
+
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
 
@@ -85,6 +86,7 @@
   function submitForm(){
     document.statusForm.submit()
   }
+  
 </script>
   
 {% endblock %}
