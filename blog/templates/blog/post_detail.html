@@ -3,6 +3,10 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 
+{% block meta %}
+    <meta name="keywords" content="{% for key in keywords.split %}{{ key }}, {% endfor %}">
+{% endblock %}
+
 {% block content %}
 
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
@@ -32,11 +36,11 @@
     </div>
 </div>
 
-<div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
+<!-- <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
   <div class="card-body text-center">
     {% for key in keywords.split %}  #{{ key }}  {% endfor %}
   </div>
-</div>
+</div> -->
 
 <div class="card m-5" style="background-color: #202020; color: #FFFFFF;">
   <div class="card-body">
