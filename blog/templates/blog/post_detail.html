@@ -25,7 +25,7 @@
         {% csrf_token %}
 
         <br>
-        <select name="status" id="statusSelect" class="form-select form-select-sm" onchange="submitForm()" style="width: 7%;">
+        <select name="status" id="statusSelect" class="form-select form-select-sm" onchange="submitForm()" style="width: 8%;">
           <option value="True" {% if post.status == True %} selected {% endif %}>Publish</option>
           <option value="False"{% if post.status == False %} selected {% endif %}>Draft</option>
         </select>

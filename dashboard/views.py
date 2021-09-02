@@ -33,7 +33,6 @@ class DashboardNew(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('dashboard')
 
-
     def user_passes_test(self, request):
         if request.user.is_superuser:
             return True
@@ -99,5 +98,5 @@ class DashboardViewPost(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = super().get_object()
-        context['posts'] = Post.objects.filter(author = obj)
+        context['posts'] = Post.objects.filter(author=obj)
         return context

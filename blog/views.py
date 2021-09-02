@@ -32,7 +32,6 @@ class PostDetail(generic.DetailView):
         clean_content = self.cleanhtml(obj.content)
         kwords = keywords.keywords(clean_content)
 
-
         context['comments'] = obj.comments.filter(active=True)
         context['post'] = obj
         context['form'] = self.form_class

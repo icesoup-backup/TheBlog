@@ -1,7 +1,7 @@
-from django.forms.widgets import HiddenInput
 from .models import Comment, Post
 from django import forms
 from django_summernote.widgets import SummernoteWidget
+# from django.forms.widgets import HiddenInput
 
 
 class CommentForm(forms.ModelForm):
